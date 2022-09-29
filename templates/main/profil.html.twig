@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %} Profil {{ app.user.nom }} {% endblock %}
+
+ {% block body %}
+<section class="wrapper style1 special user-container">
+
+
+
+         {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{path('panel_admin') }}"class="button primary" >Admin Panel</a>
+        {% endif %}
+
+    <div class="flexProfil">
+            <div class="container  profil profil-left">
+                <h2> Vos informations: </h2>
+                <div class="WishListinfo wishtotal infoProfil">
+                    <div id="userInfo">
+                        <h3>Nom: {{app.user.getNom}} </h3>
+                        <h3>Prénom: {{app.user.getPrenom}} </h3>
+                        <h3>Email: {{app.user.getEmail}} </h3>
+                        <h3>Numéro de téléphone: {{app.user.telephone}} </h3>
+                    </div>
+                    <div id="btn_info">
+                    <a href="{{path('profil_modify')}}"class="button">Modifier</a>
+                    <a href="{{path('security_logout')}}"class="button primary" >Déconnexion</a>
+                    </div>
+                </div>
+                <div class=" WishList-page commandes histo">
+                        <h3> Historique rdv: </h3>
+                    {% if commandesOld  == null %}
+                        <p> Votre n'avez passé encore aucun-rendez vous, <a href=" {{path('services_collection', {'id': null })}} "> cliquez ici pour voir nos soins ! </a></p>
+                    {% endif  %}
+                        {% for  commande in commandesOld %}
+                    <div class="WishListinfo wishtotal">
+                                <ul>
+                                    <li> 
+                                        <p class="icon solid  fa-clock"> 
+                                            Date : {{commande.getDate.format('d/m/Y H:i')}}h</br>
+                                            {% for  article in commande.getArticles %}
+                                            <a href="{{path('services_collection', {'id': article.category.id} ) }}">{{article.category.titre}}: </a> <a href="{{path('services_showById', {'id': article.id} ) }}"> {{article.nom}} </a> </br>
+                                            {% endfor %}
+                                        </p>
+                                    </li>
+                                </ul>
+                                <div class="btn_wish">
+                                    <a href="{{path('delete_commande', {'id': commande.id}) }}" class="button  primary suppr">Supprimer</a>
+                                    <a href="{{path('services_BookingFromCommande', {'id': commande.id}) }}" class="button  primary rdv">Reprendre rendez-vous</a>
+                                </div>
+                </div>
+            
+            {% endfor %}
+</div>
+            </div>
+            
+
+        <div class="container profil WishList-page commandes">
+                <h3>prochain rendez-vous : </h3>
+        {% if commandesNext == null %}
+            <p> Votre n'avez aucun aucun-rendez vous de prévu, <a href=" {{path('services_collection', {'id': null })}} "> cliquez ici pour voir nos soins ! </a></p>
+        {% endif  %}
+            {% for  commande in commandesNext %}
+                {% set duree = 0 %}
+                {% set prix = 0 %}
+                {% set prixAbo = 0 %}
+
+            <div class="WishListinfo wishtotal commandes">
+                    <ul>
+                        <li> 
+                            <p class="icon solid  fa-clock"> 
+                                Date : {{commande.getDate.format('d/m/Y H:i')}}h</br>
+                                {% for  article in commande.getArticles %}
+                                    <a href="{{path('services_collection', {'id': article.category.id} ) }}">{{article.category.titre}}: </a> <a href="{{path('services_showById', {'id': article.id} ) }}"> {{article.nom}} </a> </br>
+                                    {% set duree = duree + article.duree %}
+                                    {% set prix = prix + article.prix %}
+                                    {% set prixAbo = prixAbo + article.prixAbo %}
+                                {% endfor %}
+                            </p>
+                                <h4>
+                                    Prix total : {{prix}}€ </br>
+                                    Prix si abonnement total : {{prixAbo}}€ </br>
+                                    Durée : {{duree}}min </br>
+                                </h4>
+                                <div class="itaDiv"><em class="ita"> *annulation par téléphone uniquement</em></div>
+                        </li>
+                    </ul>
+            </div>
+            {% endfor %}
+
+
+
+        </div>
+    </div>
+</section>
+{% endblock %}

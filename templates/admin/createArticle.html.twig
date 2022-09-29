@@ -1,0 +1,25 @@
+
+{% extends 'base.html.twig' %} 
+{% block title %}Service création{% endblock %}
+{% block stylesheets %} 
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('login') }} 
+{% endblock %} 
+{% block body %} 
+
+    <div class="container-service">
+        <div class="form">
+    {{ form_start(form, {'attr': {'class': 'form-create'}}) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.prix) }}
+        {{ form_row(form.prix_abo) }}
+        {{ form_row(form.duree) }}
+        {{ form_row(form.image) }}
+        <button type="submit">Créer</button>
+    {{form_end(form)}}
+        </div>
+    </div>
+
+
+{% endblock %}

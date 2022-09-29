@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %} Profil modification {% endblock %}
+
+ {% block body %}
+<section class="wrapper style1 special profil-modify-container">
+    <div class="container profil">
+    
+        <h1>Votre profil</h1>
+        <h2> Vos informations: <h2>
+            {{ form_start(form, {'attr': {'class': 'form-register'} }) }}
+            {{ form_row(form.nom, { 'label' : 'Nom : '}) }} 
+            {{ form_row(form.prenom, { 'label' : 'Prénom :'} ) }} 
+            {{ form_row(form.telephone, { 'label' : 'Numéro de téléphone :'} ) }} 
+            <button type="submit" class=".btn_info">modifier</button>
+            {{ form_end(form) }}
+
+
+            <a href="{{path('change_password')}}" class="button .btn_info" >Changer mot de passe</a>
+    <div>
+
+    <script>
+
+    </script>
+</section>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %} {% block title %}Nos services{% endblock %} {% block stylesheets %} {{ encore_entry_link_tags('app') }} {{ encore_entry_link_tags('services') }}
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+{% endblock %} {% block body %}
+<!-- grid boutique -->
+<section id="one" class="wrapper style1 special">
+    <div class="inner">
+        <header class="major services-header">
+            <h2 > Notre Boutique de soin</h2>
+            <p>Retrouvez toutes nos préstations et prenez rendez-vous dès maintenant</p>
+            <p id="tarif" style="font-style: italic">Tarif abonnement: 15€ pour 1 mois, 65€ pour 6 mois, 120€ pour 12 mois  </p>
+        </header>
+         {% if is_granted('ROLE_ADMIN') and fromAll != true %}
+            <a href="{{path('services_edit_cat', {'id': category[0].id}) }}" class="button primary" id="btn_connexion" >Editer la catégorie: {{category[0].titre}}</a>
+        {% endif %}
+    </div>
+
+    <nav class="nav-cat">
+        <ul class="ul-cat">
+         <a href="{{path('services_collection')}}"> <li>Voir tout</li></a>
+            {% set iCat = 0 %}
+            {% for cat in allCategory %}
+            {% if cat.id != 9 %} 
+            <a href="{{path('services_collection', {'id': cat.id} ) }}"> <li>  {{ cat.titre }}</li></a>
+            {% endif %}
+            {% set iCat = iCat + 1 %}
+            {% endfor %}
+        </ul>
+    </nav>
+
+
+
+    {% set iCat = 0 %}
+    {% for articles in allArticles %}
+
+        
+        <div class="container">
+
+        <header class="cat-header">
+            <h1> {{ category[iCat].titre }}</h1>
+            <p> {{ category[iCat].description|raw }}</p>
+        </header>
+        {% set iCat = iCat + 1 %}
+            <div class="row">        
+                
+                {% for  article in articles %}
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-grid2">
+                        <div class="product-image2">
+                            <a href="{{path('services_showById', {'id': article.id} ) }}">
+                                <img class="pic-1" src="{{article.image}}">
+                                <img class="pic-2" src="{{article.image}}">
+                            </a>
+                            <a class="add-to-cart" href="{{path('services_showById', {'id': article.id} ) }}">Voir plus</a>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title"><a href="{{path('services_showById', {'id': article.id} ) }}">{{article.nom}}</a></h3>
+                            <ul class="infoArticle">
+                                <li class="li-time"><p class=" time icon solid fa-clock">{{article.duree}}min</p></li> 
+                                <li class="li-price"><p class="price">{{article.prix}}€</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</section>
+{% endblock %}

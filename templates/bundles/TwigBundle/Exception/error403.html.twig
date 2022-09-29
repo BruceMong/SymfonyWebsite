@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %} 
+
+{% block stylesheets %} {{ encore_entry_link_tags('erreur403') }}{% endblock %}
+{% block title %} Erreur 403 {% endblock %}
+{% block body %}
+<div class="divbody">
+<div class="container">
+	<div class="forbidden-sign"></div>
+	<h1>Accès à cette page restreint.</h1>
+	<p>Vous ne disposez pas des autorisations nécessaire.</p>
+</div>
+</div>
+{% endblock %}

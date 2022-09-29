@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %} Panel administrateur {{ app.user.nom }} {% endblock %}
+
+ {% block body %}
+<section class="wrapper style1 special">
+<div class="info_panel">
+    <ul>
+        <li><a href="{{path('show_data_home') }}" class="button primary">Modifier page d'accueil</a></li>
+        <li><a href="{{path('show_data_contact') }}" class="button primary">Modifier page contact</a></li>
+        <li><a href="{{path('show_data_mentions') }}" class="button primary">Modifier page mentions légal</a></li>
+    </ul>
+</div>
+</section>
+{% endblock %}

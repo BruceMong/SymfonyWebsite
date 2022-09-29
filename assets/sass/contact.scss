@@ -1,0 +1,46 @@
+#flexCon {
+    //useless franchement mais flemme d'enlever
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.contactMain {
+    padding-top: 4em;
+}
+
+.info-contact {
+    max-width: 100%;
+}
+
+#contactForm {
+    margin-left: 2em;
+}
+
+.contact-message {
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+.feature-list {
+    text-align: left;
+    padding-left: 1em;
+    .row>div>section>p {
+        a:hover {
+            color: #adb5bd;
+        }
+        a {
+            padding-right: 0em;
+        }
+    }
+}
+
+.iconFrFooter {
+    color: white;
+}
+
+#googlemap {
+    height: 350px;
+    margin-top: 2em;
+    margin-bottom: 2.5em;
+}

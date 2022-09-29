@@ -1,0 +1,150 @@
+{% extends 'base.html.twig' %} {% block title %}Home{% endblock %} {% block body %}
+<section id="three" class="bannerNew style4 left">
+    <span class="image fit main bottom">
+    <picture>
+    <source media="(min-width: 900px)" srcset="{{ asset('build/images/banner.jpg')}}">
+    <source media="(min-width: 0px)" srcset="{{ asset('build/images/banner-medium.jpg')}}">
+    <img src={{ asset('build/images/banner.jpg')}} alt="" />
+</picture>
+
+
+    </span>
+    <div class="content">
+        <header>
+            <h2>Institut de Beauté</h2>
+            <p> Sindy Beauté </p>
+        </header>
+        <div class="info-home">
+            <a class="adresse-home adresse"  href="{{path('home')}}#map"> {{dataAll[14].content|raw}}
+            <ul class="actions">
+                <li><a href="{{path('services_collection', {'id': null })}}" class="button primary">Prendre rdv en ligne</a></li>
+            </ul>
+        </div> 
+    </div>
+
+</section>
+
+{% if dataAll[13].name == "ON" %}
+    {{dataAll[13].content|raw}}
+{% endif %}
+
+
+
+<!-- One -->
+
+<section  id="one" class="wrapper style1 special zone2">
+    <div class="lefto">
+        <div class="inner">
+            <header class="major" style="margin-bottom: 2em;">
+                {{dataAll[0].content|raw}}
+            </header>
+            <ul class="icons major ul_covid_pic" style="border-style:solid;">
+                <li><span><img src={{ asset('build/images/covid1.png')}}>  
+                        <h3>Masque</br>obligatoire</h3>
+                        <p>Merci de respecter le port du masque dans votre magasin et lors de votre rendez-vous.​</p>
+                    </span>
+                </li>
+                <li><span><img src={{ asset('build/images/covid2.png') }}>
+                        <h3>Équipements</h3>
+                        <p></br>Nos ésthéticiennes sont équipées de masques et gants pour réaliser vos soins.​</p>
+                    </span>
+                </li>
+                <li><span><img src={{ asset('build/images/covid3.png')}}>
+                        <h3>Entretien et hygiène</h3>
+                        <p> <br id="space3" />​ Alèses en papier désinfection renforcée et aération entre chaque soin.</p>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="right">
+        <iframe id ="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11582.69662612797!2d5.479516298007349!3d43.46739946490764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9c0c81348ffee5c!2sSindy%20Beaut%C3%A9!5e0!3m2!1sen!2sfr!4v1620379839040!5m2!1sen!2sfr"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</section>
+
+<!-- Three -->
+<section id="three" class="wrapper style3 special">
+    <div class="inner">
+        <header class="major">
+              {{dataAll[12].content|raw}}
+        </header>
+
+
+        <span id="carte_soin" class="">
+            <ul class="features">
+                <li class="icon solid fa-hand-holding-heart" id="soin1">
+                    <h3><a href="{{path('services_collection', {'id': '2'} ) }}">
+                    {{dataAll[1].content|raw}}
+                </li>
+                <li id="pic1" class="imgCo"><a href="{{path('services_collection', {'id': '2'} ) }}"><img src="build/images/pic-box1.jpg" alt="Main photo créé par valuavitaly - fr.freepik.com" /> </a></li>
+                <li id="pic2" class="imgCo"><a href="{{path('services_collection', {'id': '3'} ) }}"><img src="build/images/pic-box2.jpg" alt="Main photo créé par Racool_studio - fr.freepik.com" /></a> </li> 
+
+                <li class="icon solid fa-eye" id="soin2">
+                     <h3><a href="{{path('services_collection', {'id': '3'} ) }}">
+                     {{dataAll[2].content|raw}}
+
+                </li>
+                
+                <li class="icon solid fa-circle-notch" id="soin7">
+                    <h3><a href="{{path('services_collection', {'id': '1'} ) }}">
+                    {{dataAll[3].content|raw}}
+                </li>
+        <li class="imgCo" id="pic3"><a href="{{path('services_collection', {'id': '1'} ) }}"><img src="build/images/pic-box7.jpg" alt="Main photo créé par rawpixel.com - fr.freepik.com" /> </a> </li> 
+         <li class="imgCo" id="pic4"><a href="{{path('services_collection', {'id': '4'} ) }}"><img src="build/images/pic-box8.jpg" alt="Main photo créé par Racool_studio - fr.freepik.com" /> </a> </li> 
+
+                <li class="icon solid fa-burn" id="soin8">
+                    <h3><a href="{{path('services_collection', {'id': '4'} ) }}">
+                    {{dataAll[4].content|raw}}
+                </li>
+               
+
+                <li class="icon solid fa-child" id="soin3">
+                <h3><a href="{{path('services_collection', {'id': '5'} ) }}">
+                    {{dataAll[5].content|raw}}
+                </li>
+                <li class="imgCo" id="pic5"><a href="{{path('services_collection', {'id': '5'} ) }}"><img src="build/images/pic-box3.jpg" alt="Main photo créé par cookie_studio - fr.freepik.com" /></a> </li> 
+                <li class="imgCo" id="pic6"><a href="{{path('services_collection', {'id': '6'} ) }}"><img src="build/images/pic-box4.jpg" alt="Main photo créé par senivpetro - fr.freepik.com" /> </a> </li> 
+                <li class="icon solid fa-grin-stars" id="soin4">
+                <h3><a href="{{path('services_collection', {'id': '6'} ) }}">
+                    {{dataAll[6].content|raw}}
+                </li>
+                
+
+                <li class="icon solid fa-ring" id="soin9">
+                <h3><a href="{{path('services_collection', {'id': '7'} ) }}">
+                    {{dataAll[7].content|raw}} 
+                </li>
+                <li class="imgCo" id="pic7"><a href="{{path('services_collection', {'id': '7'} ) }}"><img src="build/images/pic-box9.jpg" alt="Main photo créé par master1305 - fr.freepik.com" />  </a> </li> 
+                <li class="imgCo" id="pic8"><a href="{{path('services_collection', {'id': '8'} ) }}"><img src="build/images/pic-box5.jpg" alt="Main photo créé par kroshka__nastya - fr.freepik.com" /> </a> </li> 
+
+                <li class="icon solid fa-shower" id="soin5">
+                <h3><a href="{{path('services_collection', {'id': '8'} ) }}">
+                    {{dataAll[8].content|raw}}
+                </li>
+                
+
+                <li class="icon solid fa-arrow-right" id="soin6">
+                <h3><a href="{{path('services_collection')}}">
+                    {{dataAll[9].content|raw}}
+                </li> 
+            </ul>
+        </span>
+    </div>
+</section>
+
+<!-- Two -->
+
+
+
+
+<!-- CTA -->
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src={{ asset( 'build/js/hide.js') }}></script> 
+{% endblock %}

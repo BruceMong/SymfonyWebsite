@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %}Mentions légal{% endblock %}
+    {% block stylesheets %} {{ encore_entry_link_tags('app') }} {% endblock %}
+ {% block body %}
+    <!-- One -->
+	<section id="one" class="wrapper style1 special contactMain">
+        <div class="mentionsLegal">
+                <a href="{{path('modify_data', {'id' : dataAll[19].id } ) }}" class="button primary modifyData" >Changer texte</a>
+        </div>
+	</section>
+{% endblock %}

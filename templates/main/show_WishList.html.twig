@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %}Liste de soins{% endblock %}
+
+{% block body %}
+<section class="wrapper style1 special wish-container">
+    <div class="container profil WishList-page">
+    
+        <h1>Votre liste de soins : <a href="{{path('user_account')}}" > {{ app.user.nom }} {{ app.user.prenom }} </a></h1>
+        {% if articlesInWish == null %}
+            <p> Votre liste de soin est actuellement vide, <a href=" {{path('services_collection', {'id': null })}} "> cliquez ici pour voir nos soins ! </a></p>
+        {% else  %}
+            {% set dureeTotal = 0 %}
+            {% set prixTotal = 0 %}
+            {% set prixAboTotal = 0 %}
+            {% for  article in articlesInWish %}
+                {% set dureeTotal = dureeTotal + article.duree %}
+                {% set prixTotal = prixTotal + article.prix %}
+                {% if  article.prixAbo == null or article.prixAbo == 0 %}
+                    {% set prixAboTotal = prixAboTotal + article.prix %}
+                {% else %}
+                    {% set prixAboTotal = prixAboTotal + article.prixAbo %}
+                {% endif %}
+                    <div class="WishListinfo">
+                        <ul>
+                            <li class="img_article"> <img src="{{article.image}}" alt="" /> </li>
+                            <li> 
+                                <h2> <a href="{{path('services_collection', {'id': article.category.id} ) }}"> {{article.category}}</a> : {{article.nom}}</h2> 
+                                <p class="icon solid  fa-clock"> 
+                                    {{article.duree}} min </br>
+                                    Prix : {{article.prix}}€ </br>
+                                    {% if article.prixAbo != null %}
+                                    Prix avec abonnement : {{article.prixAbo}}€
+                                    {% endif %}
+                                </p>
+                                <a href="{{path('services_showById', {'id': article.id} ) }}" class="button">Voir détail ...</a>
+                                <a href="{{path('delete_WishList', {'id': article.id} ) }}" class="button  primary">Supprimer</a>
+                            </li>
+                        </ul>
+
+                    </div> 
+            {% endfor %}
+            <div class="WishListinfo wishtotal">
+                <ul>
+                    <li> 
+                    <h2 id="RDV">  Sommaire :</h2>
+                        <p class="icon solid  fa-clock"> 
+                            Duréee total de vos soins : {{dureeTotal}}min </br>
+                            Prix total : {{prixTotal}}€ </br>
+                            Prix total avec abonnement : {{prixAboTotal}}€
+                        </p>
+                    </li>
+                </ul>
+                <div class="btn_wish">
+                    <a href="{{path('delete_AllWishList') }}" class="button  primary suppr">Tout supprimer</a>
+                    <a  href="{{path('services_BookingFromWishList') }}" class="button  primary rdv">Prendre rendez-vous</a>
+                </div>
+            <div>
+
+        {% endif  %}
+    <div>
+</section>
+{% endblock %}

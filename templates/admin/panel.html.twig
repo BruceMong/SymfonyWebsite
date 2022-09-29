@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %} Panel administrateur {{ app.user.nom }} {% endblock %}
+
+ {% block body %}
+<section class="wrapper style1 special">
+<div class="info_panel">
+    <ul>
+        <li><a href="{{path('admin_viewUsers')}}" class="button primary" >Voir profil des utilisateurs</a></li>
+        <li><a href="{{path('admin_viewUsers_mail')}}" class="button primary" >Email utilisateurs</a></li>
+        <li><a href="{{path('services_create')}}" class="button primary" >Créer un article</a></li>
+        <li><a href="{{path('show_data')}}" class="button primary" >Modifier texte</a></li>
+        <li><a href="{{path('event_data')}}" class="button primary" >Bannière Evènement</a></li>
+    </ul>
+</div>
+</section>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %} Contact/Information {% endblock %}
+    {% block stylesheets %} {{ encore_entry_link_tags('app') }} {% endblock %}
+ {% block body %}
+
+{% if app.user is null %}
+    {% set nom = "" %}
+    {% set email = "" %}
+{% else %}
+    {% set nom = app.user.nom %}
+     {% set email = app.user.email  %}
+{% endif %}
+                    <!-- One -->
+					<section id="one" class="wrapper style1 special contactMain">
+                    <div id="flexCon">
+                    <header>
+                        <h2>Information / Contact</h2>
+                            <div id="googlemap">
+                            <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11582.69662612797!2d5.479516298007349!3d43.46739946490764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9c0c81348ffee5c!2sSindy%20Beaut%C3%A9!5e0!3m2!1sen!2sfr!4v1620379839040!5m2!1sen!2sfr"
+                            width="80%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </header>
+                    <div class="row info-contact">
+                        <div class="col-6 col-12-medium">
+                            <!-- Contact Form -->
+                            <section id="contactForm">
+                            <!--    <form method="post" action="#">-->
+                                    {{ form_start(formMail) }}
+                                    <div class="row gtr-50">
+                                        <div class="col-6 col-12-small  formFooter"> 
+                                            {{ form_row(formMail.name, {'attr' : {'placeholder' : 'Nom', 'class' : 'contact-name', 'type' : 'text', 'value' : nom}, 'label' : false } ) }} 
+                                        </div>
+                                        <div class="col-6 col-12-small  formFooter">
+                                                {{ form_row(formMail.email, {'attr' : {'placeholder' : 'Email', 'class' : 'contact-email', 'type' : 'text','value' : email}, 'label' : false } ) }} 
+                                        </div>
+                                        <div class="col-12  formFooter">
+                                            {{ form_row(formMail.msg, {'attr' : {'placeholder' : 'Entrez votre message ...', 'class' : 'contact-message', 'rows':'4'}, 'label' : false } ) }} 
+                                        </div>
+
+                                        <div class="col-12  formFooter">
+                                            <ul class="actions">
+                                                <li><input type="submit" class="style1" value="Envoyer" /></li>
+                                                <li><input type="reset" class="style2" value="Effacer" /></li>
+                                            </ul>
+                                        </div>
+                                        {{ form_end(formMail) }}
+                                    </div>
+                                </form>
+                            </section>
+                        </div>
+                        <div class="col-6 col-12-medium">
+                            <!-- Contact -->
+                            <section class="feature-list small ">
+                                <div class="row">
+                                    <div class="col-6 col-12-small formFooter">
+                                        <section>
+                                            <a href="{{path('modify_data', {'id' : dataAll[15].id } ) }}" class="button primary modifyData" >Changer texte</a>
+                                        </section>
+                                    </div>
+                                    <div class="col-6 col-12-small formFooter">
+                                        <section>
+                                            <a href="{{path('modify_data', {'id' : dataAll[16].id } ) }}" class="button primary modifyData" >Changer texte</a>
+                                        </section>
+                                    </div>
+                                    <div class="col-6 col-12-small formFooter">
+                                        <section>
+                                            <a href="{{path('modify_data', {'id' : dataAll[17].id } ) }}" class="button primary modifyData" >Changer texte</a>
+                                        </section>
+                                    </div>
+                                    <div class="col-6 col-12-small formFooter">
+                                        <section>
+                                            <a href="{{path('modify_data', {'id' : dataAll[18].id } ) }}" class="button primary modifyData" >Changer texte</a>
+                                        </section>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+					</section>
+{% endblock %}

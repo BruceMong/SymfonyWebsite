@@ -1,0 +1,21 @@
+
+{% extends 'base.html.twig' %} 
+{% block title %}Service modification{% endblock %}
+{% block stylesheets %} 
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('login') }} 
+{% endblock %} 
+{% block body %} 
+
+    <div class="container-service">
+        <div class="form">
+    {{ form_start(form, {'attr': {'class': 'form-create'}}) }}
+        {{ form_row(form.titre) }}
+        {{ form_row(form.description) }}
+        <button type="submit">modifier</button>
+    {{form_end(form)}}
+        </div>
+    </div>
+
+
+{% endblock %}

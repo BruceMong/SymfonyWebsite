@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{article.nom}}
+{% endblock %}
+
+{% block body %}
+
+<nav>
+
+<section class="wrapper alt style2">
+
+    <section class="spotlight soin-id" id="about">
+        <div class="image">
+        <!--<img src={{ asset( 'build/images/pic01.jpg')}} alt="Personnes photo créé par javi_indy - fr.freepik.com" /> -->
+        <img id="imgarticlebyid" src="{{article.image}}" alt="" /> 
+        </div>
+        <div class="content">
+            <h1><a href="{{path('services_collection') }}"> Nos soins </a> / <a href="{{path('services_collection', {'id': article.category.id} ) }}"> {{article.category}}</a></h1>
+            <h2> {{article.nom}}</h2>
+            <div id="dataArticle">
+                <p class="icon solid  fa-clock"> {{article.duree}} min </p>
+                <p Prix : {{article.prix}}€ </br>
+                    {% if article.prixAbo != null %}
+                    Prix avec abonnement : {{article.prixAbo}}€
+                    {% endif %}
+                </p>
+            <p id="descriArticle">{{article.description|raw}}</p>
+            </div>
+            <ul class="actions ">
+                {% if inWishList == false %}
+                    <li><a href="{{path('services_wish_modify', {'id': article.id} ) }}" class="button ">+ Ajouter à la liste de soin</a></li>
+                {% else %}
+                    <li><a href="{{path('services_wish_modify', {'id': article.id} ) }}" class="button button_add">- Retirer de la liste de soin</a></li>
+                {% endif %}
+                <li><a href="{{path('services_BookingFromShowById', {'id': article.id} ) }}" class="button  primary">Choisir une date</a></li>
+            </ul>
+                {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{path('services_edit', {'id': article.id} ) }}"class="button primary" id="btn_connexion" >Editer</a>
+                {% endif %}
+        </div>
+    </section>
+    
+{% endblock %}

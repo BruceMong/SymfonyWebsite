@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<!--
+	Spectral by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="icon" type="image/png" sizes="32x32" href={{ asset( 'build/images/favicon.png')}}>
+    <link rel="shortcut icon" type="image/png" sizes="32x32" href={{ asset( 'build/images/favicon.png')}}>
+
+    <title>
+        {% block title %}Welcome!{% endblock %}
+    </title>
+    {% block stylesheets %} {{ encore_entry_link_tags('app') }} {% endblock %}
+
+
+</head>
+
+
+<a class="icon solid fa-chevron-up" id="button_to_top">TOP</a>
+<!-- ptetre hors body -->
+
+<body class="landing is-preload">
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+        <header id="header">
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{{path('home')}} ">SindyBeauté</a>
+                    <button class="navbar-toggler" type="button" onclick="myFunction()">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+                    <div class="collapse navbar-collapse" id="navbarColor02">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href=" {{path('home')}} ">Home
+										<span class="visually-hidden">(current)</span>
+									</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href=" {{path('services_collection', {'id': null })}} ">Soins</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{path('contact') }}" >Contact</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex" action="{{path('search')}}" method="get">
+                            <input class="form-control searchBarInput me-sm-2" name="data" type="text" placeholder="Entrez votre recherche ...">
+                            <button class="btn btn-secondary " type="submit">Rechercher</button>
+                        </form>
+                        <ul class="navbar-nav me-auto account-ul">
+                        {% if not app.user %}
+                            <li class="nav-item"> <a href="{{path('security_connexion')}}"class="button primary" id="btn_connexion" >Connexion</a></li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{path('show_WishList')}}">
+                                        <img class="account-img" src={{ asset( 'build/images/wish-icon.png')}} alt="account link" title="Votre profil"  />
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{path('user_account')}}">
+                                        <img class="account-img" src={{ asset( 'build/images/account-icon.png')}} alt="account link"  />
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+                        <!-- Navigation Menu phone -->
+                        <div class="topnav">
+                        <div id="myLinks">
+                            <form class="d-flex" action="{{path('search')}}" method="get">
+                                <input class="form-control searchBarInput me-sm-2" name="data" type="text" placeholder="Entrez votre recherche ...">
+                                <button class="btn btn-secondary " type="submit">Rechercher</button>
+                            </form>
+                            <a class="nav-link" href=" {{path('home')}} ">Home
+                            <a class="nav-link" href=" {{path('services_collection', {'id': null })}} ">Soins</a>
+                            <a class="nav-link" href="{{path('contact') }}" >Contact</a>
+                            <a class="nav-link" href="{{path('show_WishList')}}">
+                            Panier
+                             </a>
+                            <a class="nav-link" href="{{path('user_account')}}">
+                            Profil
+                            </a>
+                        </div>
+
+
+        </header>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success" />
+                {{message}}
+            </div>
+        {% endfor %}
+                {% for message in app.flashes('fail') %}
+            <div class="alert alert-danger" />
+                {{message}}
+            </div>
+        {% endfor %}
+        
+
+        {% block body %}{% endblock %}
+        <!-- Footer -->
+        <footer>
+            <section id="footer" class="wrapperFrEscape">
+                <div class="containerFrEscape">
+                    <div id="copyright">
+                        <ul>
+                            <li>&copy; SindyBeauté</li>
+                            <li><a href="{{path('mention_legal')}}">Mentions légal</a></li>
+                            <li><a href="{{path('contact') }}" >Contact</a></li>
+                            <li><a href="{{path('infositeweb') }}" >Info web</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </footer>
+    </div>
+
+
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+    <script src={{ asset( 'build/js/jquery.min.js') }}></script>
+    <script src={{ asset( 'build/js/jquery.scrollex.min.js') }}></script>
+    <script src={{ asset( 'build/js/jquery.scrolly.min.js') }}></script>
+    <script src={{ asset( 'build/js/browser.min.js') }}></script>
+    <script src={{ asset( 'build/js/breakpoints.min.js') }}></script>
+    <script src={{ asset( 'build/js/util.js') }}></script>
+    <script src={{ asset( 'build/js/jquery.dropotron.min.js') }}></script>
+    <script src={{ asset( 'build/js/main.js') }}></script>
+    <script src={{ asset( 'build/js/button_to_top.js') }}></script>
+    {% block javascripts %}{% endblock %} 
+
+</body>
+
+</html>

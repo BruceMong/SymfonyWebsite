@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %} 
+
+
+{% set space = ' ' %}
+{% block title %} Admin get emails {% endblock %}
+
+
+{% block body %}
+<section class="wrapper style1 special">
+    <div class= "infoUser">
+        <h1>Emails des utilisateurs</h1>
+        <textarea id="mail_msg" required="required" placeholder="Entrez votre message ..." class="contact-message" rows="5">
+        {% for user in users %}
+        {{user.getEmail}} {{space}} 
+        {% endfor %}
+        </textarea>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %} Modifcation Texte Event {% endblock %}
+
+ {% block body %}
+    <section class="wrapper style1 special">
+    
+    <h1> modification de bannière</h1>
+        {{ form_start(form, {'attr': {'class': 'modify-text'}}) }} 
+        {{ form_row(form.content, {'attr': {'class': 'formText'}}) }} 
+        <button type="submit">modifier</button>
+        {{form_end(form)}}
+        <label> En cas de probleme copier/coller texte ci-dessous</label>
+        <textarea disabled="true"> {{data.content|raw}}</textarea>
+    </section>
+    </section>
+{% endblock %}

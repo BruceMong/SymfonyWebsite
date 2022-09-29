@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %}Mentions légal{% endblock %}
+    {% block stylesheets %} {{ encore_entry_link_tags('app') }} {% endblock %}
+ {% block body %}
+    <!-- One -->
+	<section id="one" class="wrapper style1 special contactMain">
+        <div class="mentionsLegal">
+            {{dataAll[19].content|raw}}
+        </div>
+	</section>
+{% endblock %}

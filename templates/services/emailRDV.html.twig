@@ -1,0 +1,14 @@
+<h1>Bonjour {{client}},</h1>
+
+<p>Vous vous confirmons la validation de votre rendez vous le {{date.format('l j/m/Y')|replace({"Monday": "Lundi", "Tuesday": "mardi", "Thursday" : "jeudi", "Friday" : "Vendredi"}) }} à {{date.format('H:i')}}h</p>
+<p>Prix total: {{prix}}€</p>
+<p>Prix si abonnement total: {{prixAbonnement}}€</p>
+<p>Durée: {{duree}} min</p>
+<p>
+Détails:
+{{soins|raw}}
+</p>
+
+<p>En cas d'annulation du rendez vous, merci de contacter le numéro suivant: <a href="tel:0611703750">06 11 70 37 50</a></p>
+
+<p>Merci de ne pas répondre.</p>

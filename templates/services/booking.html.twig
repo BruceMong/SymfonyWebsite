@@ -1,0 +1,232 @@
+{% extends 'base.html.twig' %} 
+{% block title %}Réservation{% endblock %}
+{% block stylesheets %} 
+
+    {{ encore_entry_link_tags('calendar') }}
+    
+
+    <script>
+        document.getElementsByTagName("html")[0].className += " js";
+    </script>
+{% endblock %} 
+{% block body %} 
+
+<div id="no-rdv-dispo">
+</div>
+
+
+<div id="calendar">
+
+    <header class="cd-main-header text-center flex flex-column flex-center">
+
+    <div id="title-booking">
+        <h1 class="text-xl">Réservation</h1>
+        <h2 class="text-xl" id="week" >{% if info[0] == info[1] %}{{info[0]}} {% else %} {{info[0]}} - {{info[1]}} {% endif %}  </h2>
+    </div>
+
+
+
+<ul class="pn-links grid">
+  <li class="pn-links__item col-6@md" id="previousR">
+    <a class="pn-links__link justify-center justify-between@md" id="lastWeek" href="{{path('services_booking_post')}}?sens=last&datePage={{monday.format('d/m/Y:H:i:s')}}">
+      <svg class="pn-links__icon icon icon--lg flip-x"  id="arrow-previousR" viewBox="0 0 48 48">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="37" y1="14" x2="47" y2="24" />
+          <line x1="47" y1="24" x2="37" y2="34" />
+          <line x1="47" y1="24" x2="1.5" y2="24" />
+        </g>
+      </svg>
+
+      <span class="margin-left-sm">
+        <i class="sr-only">Previous article: </i>Semaine précédente
+    </a>
+  </li>
+
+  <li class="pn-links__item col-6@md" id="nextL">
+    <a class="pn-links__link justify-center justify-between@md"  id="nextWeek" href="{{path('services_booking_post')}}?sens=next&datePage={{monday.format('d/m/Y:H:i:s')}}">
+      <span class="margin-right-sm">
+        <i class="sr-only">Next article: </i>Semaine <br>prochaine     
+      </span>
+
+      <svg class="pn-links__icon icon icon--lg"  id="arrow-nextL"  viewBox="0 0 48 48">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="37" y1="14" x2="47" y2="24" />
+          <line x1="47" y1="24" x2="37" y2="34" />
+          <line x1="47" y1="24" x2="1.5" y2="24" />
+        </g>
+      </svg>
+    </a>
+  </li>
+</ul>
+
+
+    </header>
+
+    <div class="cd-schedule cd-schedule--loading margin-top-lg margin-bottom-lg js-cd-schedule">
+        <div class="cd-schedule__timeline">
+            <ul>
+                <li><span>10:00</span></li>
+                <li><span>10:30</span></li>
+                <li><span>11:00</span></li>
+                <li><span>11:30</span></li>
+                <li><span>12:00</span></li>
+                <li><span>12:30</span></li>
+                <li><span>13:00</span></li>
+                <li><span>13:30</span></li>
+                <li><span>14:00</span></li>
+                <li><span>14:30</span></li>
+                <li><span>15:00</span></li>
+                <li><span>15:30</span></li>
+                <li><span>16:00</span></li>
+                <li><span>16:30</span></li>
+                <li><span>17:00</span></li>
+
+            </ul>
+        </div>
+        <!-- .cd-schedule__timeline -->
+
+        <div class="cd-schedule__events">
+        {% set i = 1 %}
+          
+            <ul>
+                <li class="cd-schedule__group">
+                    <div class="cd-schedule__top-info"><span id="lundi">Lundi<br>{{days[0]}} </span></div>
+                    <ul>
+                    {% for event in events %}
+                    {% if event[0].format('w') == 1 %}
+                        <li class="cd-schedule__event">
+                            <a data-start={{ event[0].format('H:i') }} data-end={{ event[1].format('H:i') }} data-content="Rdv={{ event[1].format('c') }}" data-event="event-{{i}}" href="#0">
+                                <em class="cd-schedule__name">Rdv Possible</em>
+                            </a>
+                        </li>
+                        {% set i = i + 1 %}
+                    {% endif %}
+                    {% endfor %}
+                    </ul>
+                </li>
+
+                <li class="cd-schedule__group">
+                    <div class="cd-schedule__top-info"><span id="mardi">Mardi<br>{{days[1]}} </span></div>
+                    <ul>
+                    </ul>
+                </li>
+
+                <li class="cd-schedule__group">
+                    <div class="cd-schedule__top-info"><span id="mercredi">Mercredi<br>{{days[2]}} </span></div>
+                    <ul>
+                    </ul>
+                </li>
+
+                <li class="cd-schedule__group">
+                    <div class="cd-schedule__top-info"><span id="jeudi">Jeudi<br>{{days[3]}} </span></div>
+                    <ul>
+                    {% for event in events %}
+                    {% if event[0].format('w') == 4 %}
+                        <li class="cd-schedule__event">
+                            <a data-start={{ event[0].format('H:i') }} data-end={{ event[1].format('H:i') }} data-content="Rdv={{ event[1].format('c') }}" data-event="event-{{i}}" href="#0">
+                                <em class="cd-schedule__name">Rdv Possible</em>
+                            </a>
+                        </li>
+                        {% set i = i + 1 %}
+                    {% endif %}
+                    {% endfor %}
+                    </ul>
+                </li>
+
+                <li class="cd-schedule__group">
+                    <div class="cd-schedule__top-info"><span id="vendredi">Vendredi<br>{{days[4]}} </span></div>
+                    <ul>
+                    {% for event in events %}
+                    {% if event[0].format('w') == 5 %}
+                        <li class="cd-schedule__event">
+                            <a data-start={{ event[0].format('H:i') }} data-end={{ event[1].format('H:i') }} data-content="Rdv={{ event[1].format('c') }}" data-event="event-{{i}}" href="#0">
+                                <em class="cd-schedule__name">Rdv-Possible</em>
+                            </a>
+                        </li>
+                        {% set i = i + 1 %}
+                    {% endif %}
+                    {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="cd-schedule-modal">
+            <header class="cd-schedule-modal__header">
+                <div class="cd-schedule-modal__content">
+                    <span class="cd-schedule-modal__date"></span>
+                    <h3 class="cd-schedule-modal__name"></h3>
+                </div>
+
+                <div class="cd-schedule-modal__header-bg"></div>
+            </header>
+
+            <div class="cd-schedule-modal__body">
+                <div class="cd-schedule-modal__event-info">
+                    <div id="rdv-event">
+                    <h1> Information: </h1>
+                    <div id="data-rdv"> 
+                        <div id="info-rdv">
+                        <ul >
+                        <li><h3>{{ user.prenom }} {{ user.nom }}</h3></li>
+                            <li><h2>Prix total: </h2><h3> {{ prix }}€</h3></li>
+                            <li><h2>Prix total si abonnement : </h2><h3> {{ prixAbo }}€</h3></h2></li>
+                            <li><h2>Durée :</h2><h3 id="duree"> {{ duree }}min</h3> </h2></li>
+                        </ul>
+                        </div>
+                        <div id="article-rdv">
+                            <h2>Article(s) : </h2>
+                            {% for article in articles %}
+                            <h2>- {{article.nom}}</h2>
+                            {% endfor %}
+                        </div>
+                        </div>
+                        <h3> Sélectionner l'heure du rendez-vous:</h3>
+                        <div id="infoTemps">
+                        <script>
+                            function validate(form) {
+                                    return confirm('Voulez vous vraiment confirmer le rendez vous ?' );
+                            }
+                        </script>
+                            <form id="formInfoTemps" onsubmit="return validate(this);" name="InfoRDV" action="{{path('services_booking_post')}}" method="post">
+                                <div id="horaire">
+                                    <select name="horaireStart" id="choose-horaire"></select>
+                                    <p id="heureFin">>heureFin</p> 
+                                    <input id="dataHoraireEnd" class="dataRdv" name="horaireEnd" value="">
+                                    <input id="dataDate" class="dataRdv" name="date" value="">
+                                    <input class="dataRdv" name="user" value="{{ user.prenom }} {{ user.nom }}">
+                                    <input class="dataRdv" name="prix" value="{{ prix }}">
+                                    <input class="dataRdv" name="telephone" value="{{ user.telephone }}">
+                                    <input class="dataRdv" name="email" value="{{ user.email }}">
+                                    <input class="dataRdv" name="prixAbo" value="{{ prixAbo }}">
+                                    <input class="dataRdv" name="duree" value="{{ duree }}">
+                                    <input class="dataRdv" name="articles" value="{% for article in articles  %}{{article.id}}:{% endfor %}">
+                                </div>
+                                <button id="takeRDV-button" class="button primary">Prendre rendez-vous</button>
+                            </form>
+                            
+                            
+                        </div>
+                        <p id="reglement">*Règlement directement effectué en caisse.</p> 
+                        <p id="rappelmail">*Vous recevrez un rappel en cas de confirmation de rendez-vous sur votre adresse mail: {{ user.email }}.</p> 
+                        <p id="rappelmail">*Veuillez appeller par télephone pour annuler un rendez-vous.</p> 
+                    </div>
+                </div>
+                <div class="cd-schedule-modal__body-bg"></div>
+            </div>
+
+            <a href="#0" class="cd-schedule-modal__close text-replace">Close</a>
+        </div>
+
+        <div class="cd-schedule__cover-layer"></div>
+    </div>
+    <!-- .cd-schedule -->
+
+    <script src={{ asset( 'build/js/utilBooking.js') }}></script>
+    <!-- util functions included in the CodyHouse framework<script src={{ asset( 'build/js/APIbooking.js') }}></script> -->
+    <script src={{ asset( 'build/js/booking.js') }}></script>
+    
+    
+
+    </div>
+{% endblock %} 

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %} Event Data{% endblock %}
+
+{% block body %}
+<section class="wrapper style1 special">
+<div class= "infoUser">
+    <h1>Bannière evenement</h1>
+    <ul>
+        {% if eventData.name == "ON" %}
+            <li><a href="{{path('event_dataChange') }}"> Désactiver bannière</a></li>
+        {% else %}
+            <li><a href="{{path('event_dataChange') }}"> Activer bannière</a></li>
+        {% endif %}
+            <li><a href="{{path('modify_event') }}">Modifier texte</a></li>
+    </ul>
+</div>
+</section>
+{% endblock %}

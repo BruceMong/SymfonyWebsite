@@ -1,0 +1,99 @@
+/* -------------------------------- 
+
+File#: _1_previous-next-links
+Title: Previous/Next Links
+Descr: Links to previous/next articles
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.pn-links {
+  margin-top: 02em;
+  border-top: 1px solid var(--color-contrast-low);
+  border-bottom: 1px solid var(--color-contrast-low);
+}
+
+.pn-links__item:first-child .pn-links__link {
+  border-bottom: 1px solid var(--color-contrast-low);
+}
+
+.pn-links__link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  padding: var(--space-md);
+}
+
+.pn-links__link:hover {
+  text-decoration: underline;
+}
+
+.pn-links__link:hover .pn-links__icon line:nth-child(1) {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.pn-links__link:hover .pn-links__icon line:nth-child(2) {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+}
+
+.pn-links__link:hover .pn-links__icon line:nth-child(3) {
+  stroke-dashoffset: 14;
+}
+
+.pn-links__icon {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.pn-links__icon line:nth-child(1),
+.pn-links__icon line:nth-child(2) {
+  -webkit-transition: -webkit-transform 0.3s var(--ease-out);
+  transition: -webkit-transform 0.3s var(--ease-out);
+  transition: transform 0.3s var(--ease-out);
+  transition: transform 0.3s var(--ease-out), -webkit-transform 0.3s var(--ease-out);
+}
+
+.pn-links__icon line:nth-child(1) {
+  -webkit-transform-origin: 42px 19px;
+          transform-origin: 42px 19px;
+}
+
+.pn-links__icon line:nth-child(2) {
+  -webkit-transform-origin: 42px 29px;
+          transform-origin: 42px 29px;
+}
+
+.pn-links__icon line:nth-child(3) {
+  stroke-dasharray: 48;
+  -webkit-transition: stroke-dashoffset 0.3s var(--ease-out);
+  transition: stroke-dashoffset 0.3s var(--ease-out);
+}
+
+#arrow-previousR {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+}
+
+#nextL {
+  padding-left: 1em;
+}
+
+#previousR {
+  padding-right: 1em;
+}
+
+/*
+  @include breakpoint(md) {
+    .pn-links__item:first-child .pn-links__link {
+      border-bottom: none;
+      border-right: 1px solid var(--color-contrast-low);
+    }
+  }
+  */

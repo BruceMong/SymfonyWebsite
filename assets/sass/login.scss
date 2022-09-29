@@ -1,0 +1,165 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+.login-page,
+.container-service {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+     ::placeholder {
+        color: #464241 !important;
+        opacity: 1;
+    }
+    label {
+        color: rgba(0, 0, 0)
+    }
+    .form {
+        position: relative;
+        z-index: 1;
+        background: #FFFFFF;
+        max-width: 360px;
+        margin: 0 auto 100px;
+        padding: 45px;
+        text-align: unset;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    }
+    .form input {
+        font-family: "Roboto", sans-serif;
+        outline: 0;
+        background: #f2f2f2;
+        width: 100%;
+        border: 0;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+    .form button {
+        font-family: "Roboto", sans-serif !important;
+        text-transform: uppercase !important;
+        outline: 0 !important;
+        background: #af4ca7 !important;
+        width: 100% !important;
+        border: 0 !important;
+        padding: 15px !important;
+        color: #FFFFFF !important;
+        font-size: 14px !important;
+        -webkit-transition: all 0.3 ease !important;
+        transition: all 0.3 ease !important;
+        cursor: pointer !important;
+        line-height: unset;
+        height: unset;
+    }
+    .form button:hover,
+    .form button:active,
+    .form button:focus {
+        background: #a043a0 !important;
+    }
+    .form .message {
+        margin: 15px 0 0;
+        color: #b3b3b3 !important;
+        font-size: 12px;
+    }
+    .form .message a {
+        color: #af4ca7 !important;
+        text-decoration: none;
+    }
+    .form .form-register {
+        display: none;
+    }
+    .container {
+        position: relative;
+        z-index: 1;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .container:before,
+    .container:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .container .info {
+        margin: 50px auto !important;
+        text-align: center !important;
+    }
+    .container .info h1 {
+        margin: 0 0 15px;
+        padding: 0;
+        font-size: 36px;
+        font-weight: 300;
+        color: #1a1a1a !important;
+    }
+    .container .info span {
+        color: #4d4d4d !important;
+        font-size: 12px;
+    }
+    .container .info span a {
+        color: #000000 !important;
+        text-decoration: none;
+    }
+    .container .info span .fa {
+        color: #EF3B3A !important;
+    }
+    input,
+    select,
+    textarea {
+        color: #000 !important;
+    }
+    textarea:focus,
+    input:focus {
+        color: #000 !important;
+    }
+    ul {
+        font-size: 0.7em;
+        list-style: none;
+        margin: 0 0 0 0;
+        padding-left: 0em;
+        text-align: unset;
+    }
+    li {
+        text-align: unset;
+        color: red !important;
+    }
+    h1 {
+        font-family: "Roboto", sans-serif !important;
+        font-size: 18px;
+        color: rgb(70, 59, 59) !important;
+        text-transform: none !important;
+        font-weight: unset;
+        letter-spacing: unset;
+    }
+    ul li {
+        letter-spacing: 0.0em !important;
+        padding: 0 !important;
+    }
+}
+
+body {
+    background: #b852a7;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, #b852a7, #e46fd0);
+    background: -moz-linear-gradient(right, #b852a7, #e46fd0);
+    background: -o-linear-gradient(right, #b852a7, #e46fd0);
+    background: linear-gradient(to left, #b852a7, #e46fd0);
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+small {
+    color: #463b3b !important;
+}
+
+.mailbtn {
+    letter-spacing: 0em;
+    text-transform: initial !important;
+}
+
+.form {
+    color: #463b3b !important;
+}
+
+input[type="checkbox"] {
+    appearance: checkbox !important;
+    opacity: 100;
+    width: inherit;
+}

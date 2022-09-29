@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %} 
+{% block stylesheets %} 
+    {{ encore_entry_link_tags('erreur404') }}
+{% endblock %} 
+{% block title %} Erreur 404{% endblock %}
+
+{% block body %}
+<a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjU8I6kvsbwAhXd8HMBHYpgBgU4ChAWMAd6BAgGEAM&url=https%3A%2F%2Fwww.ftcab.com%2Franchi-to-kolkata-taxi.aspx&usg=AOvVaw1M8U0bTfqd9yaEEZQk0NHC" target="_blank">
+  <header class="top-header">
+</header>
+
+<!--dust particel-->
+<div>
+  <div class="starsec"></div>
+  <div class="starthird"></div>
+  <div class="starfourth"></div>
+  <div class="starfifth"></div>
+</div>
+<!--Dust particle end--->
+
+
+<div class="lamp__wrap">
+  <div class="lamp">
+    <div class="cable"></div>
+    <div class="cover"></div>
+    <div class="in-cover">
+      <div class="bulb"></div>
+    </div>
+    <div class="light"></div>
+  </div>
+</div>
+<!-- END Lamp -->
+<section class="error">
+  <!-- Content -->
+  <div class="error__content">
+    <div class="error__message message">
+      <h1 class="message__title">Page Introuvable</h1>
+      <p class="message__text">Nous sommes désolé, la page que vous cherchez est introuvable. Le lien que vous cherchez n'existe peux etre plus.</p>
+    </div>                      
+    <div class="error__nav e-nav">
+      <a href="{{path('home')}} " class="e-nav__link">HOME</a>
+    </div>
+  </div>
+  <!-- END Content -->
+
+</section>
+
+  </a>
+{% endblock %}

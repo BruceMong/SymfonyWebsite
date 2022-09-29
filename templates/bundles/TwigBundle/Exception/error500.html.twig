@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %} 
+{% block stylesheets %} 
+    {{ encore_entry_link_tags('erreur500') }}
+{% endblock %} 
+{% block title %} Erreur 500{% endblock %}
+
+{% block body %}
+<div class="divbody">
+    <div id="error">Erreur</div>
+    <div class="error-num">500
+        <div div class="error-num__clip">500</div>
+    </div>
+    <p id="desc">Uh oh, il semble y avoir un problème.</p>
+    <p>Laissez moi vous aider à trouver <a href="{{path('home')}}">une sortie </a></p>
+</div>
+
+{% endblock %}
